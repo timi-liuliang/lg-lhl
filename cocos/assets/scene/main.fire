@@ -923,7 +923,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 640,
-      "height": 960
+      "height": 0
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -948,7 +948,13 @@
     "node": {
       "__id__": 25
     },
-    "_enabled": true
+    "_enabled": true,
+    "houseParentNode": {
+      "__id__": 12
+    },
+    "housePrefab": {
+      "__uuid__": "68774641-a67f-4236-82e3-b87685e0833c"
+    }
   },
   {
     "__type__": "cc.Widget",
