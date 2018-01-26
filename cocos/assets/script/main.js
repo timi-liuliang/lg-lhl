@@ -56,7 +56,7 @@ cc.Class({
     dropHouse() {
         var newHouse = cc.instantiate(this.housePrefab);
         newHouse.parent = this.houseParentNode;
-        newHouse.setScale( 0.7, 0.7);
+        //newHouse.setScale( 0.7, 0.7);
         newHouse.setPosition(cc.rand() % 500, 500);
     },
 
