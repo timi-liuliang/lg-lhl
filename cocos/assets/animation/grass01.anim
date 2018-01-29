@@ -1,0 +1,49 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "grass01",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 1.5,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 2,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "11ddc665-cd11-4c06-a5c4-a433409daad1"
+            }
+          },
+          {
+            "frame": 0.5,
+            "value": {
+              "__uuid__": "76ca7639-51b2-4ff5-8b80-8ca4d4e5f61a"
+            }
+          },
+          {
+            "frame": 1,
+            "value": {
+              "__uuid__": "fc82084d-7edc-486d-8ecb-a91222719c38"
+            }
+          },
+          {
+            "frame": 1.25,
+            "value": {
+              "__uuid__": "76ca7639-51b2-4ff5-8b80-8ca4d4e5f61a"
+            }
+          },
+          {
+            "frame": 1.4833333333333334,
+            "value": {
+              "__uuid__": "11ddc665-cd11-4c06-a5c4-a433409daad1"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}

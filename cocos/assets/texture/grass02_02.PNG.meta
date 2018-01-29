@@ -1,14 +1,14 @@
 {
   "ver": "1.0.0",
-  "uuid": "e658264a-44e4-4d6a-ba98-a7821cc5c9cf",
+  "uuid": "ab013976-13fc-42b9-b8a4-c3b7cc15b73c",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
   "subMetas": {
-    "ground01": {
+    "grass02_02": {
       "ver": "1.0.3",
-      "uuid": "f302b13a-7255-4a06-8153-f5f70ea0befd",
-      "rawTextureUuid": "e658264a-44e4-4d6a-ba98-a7821cc5c9cf",
+      "uuid": "1a5bd1b0-d32f-4a70-8f76-2f94726eb485",
+      "rawTextureUuid": "ab013976-13fc-42b9-b8a4-c3b7cc15b73c",
       "trimType": "auto",
       "trimThreshold": 1,
       "rotated": false,
@@ -16,10 +16,10 @@
       "offsetY": 0,
       "trimX": 0,
       "trimY": 0,
-      "width": 640,
-      "height": 70,
-      "rawWidth": 640,
-      "rawHeight": 70,
+      "width": 42,
+      "height": 35,
+      "rawWidth": 42,
+      "rawHeight": 35,
       "borderTop": 0,
       "borderBottom": 0,
       "borderLeft": 0,
