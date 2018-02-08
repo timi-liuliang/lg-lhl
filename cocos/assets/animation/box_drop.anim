@@ -191,5 +191,11 @@
       ]
     }
   },
-  "events": []
+  "events": [
+    {
+      "frame": 0,
+      "func": "onStartAnim",
+      "params": []
+    }
+  ]
 }

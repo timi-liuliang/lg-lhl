@@ -6,6 +6,7 @@ cc.Class({
     properties: {
         // 父结点
         houseParentNode : cc.Node,
+        dropNode : cc.Node,
 
         // 房子预制体
         housePrefab : cc.Prefab
@@ -56,8 +57,8 @@ cc.Class({
     dropHouse() {
         var newHouse = cc.instantiate(this.housePrefab);
         newHouse.parent = this.houseParentNode;
-        //newHouse.setScale( 0.7, 0.7);
-        newHouse.setPosition(cc.rand() % 500, 500);
-    },
+        newHouse.setPosition( this.dropNode.getPosition());
 
+        this.dropNode.getComponent(cc.Sprite).setVisible(false);
+    },
 });
