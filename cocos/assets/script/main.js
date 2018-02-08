@@ -7,6 +7,7 @@ cc.Class({
         // 父结点
         houseParentNode : cc.Node,
         dropNode : cc.Node,
+        craneNode : cc.Node,
 
         // 房子预制体
         housePrefab : cc.Prefab
@@ -57,8 +58,12 @@ cc.Class({
     dropHouse() {
         var newHouse = cc.instantiate(this.housePrefab);
         newHouse.parent = this.houseParentNode;
-        newHouse.setPosition( this.dropNode.getPosition());
+        newHouse.setPositionX( this.dropNode.getPositionX());
+        newHouse.setPositionY( this.dropNode.getPositionY());
 
         this.dropNode.getComponent(cc.Sprite).setVisible(false);
+
+        // 上移吊机
+        this.craneNode.setPositionY( this.craneNode.getPositionY() + 20);
     },
 });
