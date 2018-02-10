@@ -59,11 +59,12 @@ cc.Class({
         var newHouse = cc.instantiate(this.housePrefab);
         newHouse.parent = this.houseParentNode;
         newHouse.setPositionX( this.dropNode.getPositionX());
-        newHouse.setPositionY( this.dropNode.getPositionY());
+        newHouse.setPositionY( this.dropNode.getPositionY() + this.craneNode.getPositionY());
 
         this.dropNode.getComponent(cc.Sprite).setVisible(false);
 
         // 上移吊机
-        this.craneNode.setPositionY( this.craneNode.getPositionY() + 20);
+        var houseHeight = this.dropNode.height;
+        this.craneNode.setPositionY( this.craneNode.getPositionY() + houseHeight);
     },
 });
