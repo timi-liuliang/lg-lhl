@@ -69,18 +69,21 @@ cc.Class({
 
     // 放置房子
     dropHouse() {
-        var newHouse = cc.instantiate(this.housePrefab);
-        newHouse.parent = this.houseParentNode;
-        newHouse.setPositionX( this.dropNode.getPositionX());
-        newHouse.setPositionY( this.dropNode.getPositionY() + this.craneNode.getPositionY());
+        var dropNodeSprite = this.dropNode.getComponent(cc.Sprite);
+        if( dropNodeSprite.visible){
+            var newHouse = cc.instantiate(this.housePrefab);
+            newHouse.parent = this.houseParentNode;
+            newHouse.setPositionX( this.dropNode.getPositionX());
+            newHouse.setPositionY( this.dropNode.getPositionY() + this.craneNode.getPositionY());
 
-        this.dropNode.getComponent(cc.Sprite).setVisible(false);
+            this.dropNode.getComponent(cc.Sprite).setVisible(false);
 
-        // 上移吊机
-        var houseHeight = this.dropNode.height * 0.8;
-        this.craneNode.setPositionY( this.craneNode.getPositionY() + houseHeight);
+            // 上移吊机
+            var houseHeight = this.dropNode.height * 0.8;
+            this.craneNode.setPositionY( this.craneNode.getPositionY() + houseHeight);
 
-        // move Camera
-        this.camera.node.setPositionY( this.craneNode.getPositionY() - 150);
+            // move Camera
+            this.camera.node.setPositionY( this.craneNode.getPositionY() - 150);
+        }
     },
 });
