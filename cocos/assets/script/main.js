@@ -4,6 +4,9 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
+        // main Camera
+        camera: cc.Camera,
+
         // 父结点
         houseParentNode : cc.Node,
         dropNode : cc.Node,
@@ -23,9 +26,19 @@ cc.Class({
         //cc.director.getPhysicsManager().debugDrawFlags = 0;
 
         this.registerInput();
+
+        // move Camera
+        this.camera.node.setPositionY( this.craneNode.getPositionY() - 150);
     },
 
     start () {
+    },
+
+    onEnable: function () {
+        cc.director.getPhysicsManager().attachDebugDrawToCamera(this.camera);
+    },
+    onDisable: function () {
+        cc.director.getPhysicsManager().detachDebugDrawFromCamera(this.camera);
     },
 
     // update (dt) {},
@@ -64,7 +77,10 @@ cc.Class({
         this.dropNode.getComponent(cc.Sprite).setVisible(false);
 
         // 上移吊机
-        var houseHeight = this.dropNode.height;
+        var houseHeight = this.dropNode.height * 0.8;
         this.craneNode.setPositionY( this.craneNode.getPositionY() + houseHeight);
+
+        // move Camera
+        this.camera.node.setPositionY( this.craneNode.getPositionY() - 150);
     },
 });
