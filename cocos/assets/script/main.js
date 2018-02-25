@@ -86,4 +86,9 @@ cc.Class({
             this.camera.node.setPositionY( this.craneNode.getPositionY() - 150);
         }
     },
+
+    // 重启
+    restartGame(){
+        cc.director.loadScene("main");
+    },
 });
