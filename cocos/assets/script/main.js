@@ -128,9 +128,7 @@ cc.Class({
             this.dropNode.getComponent(cc.Sprite).setVisible(false);
 
             // 上移吊机
-            if(this.preHouseYHeight > -200){
-                this.destCraneHeightY = this.preHouseYHeight + 550;
-            }
+            this.destCraneHeightY = this.preHouseYHeight + 550;
 
             // remember nodes
             this.preHouse = this.currentHouse;
