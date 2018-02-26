@@ -29,6 +29,9 @@ cc.Class({
         preHouseYHeight : -420,
         isFailed : false,
         destCraneHeightY : 0,
+
+        floor : 0,
+        score : 0,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -37,8 +40,8 @@ cc.Class({
         // 开启物理系统
         cc.director.getPhysicsManager().enabled = true;
 
-        cc.director.getPhysicsManager().debugDrawFlags = cc.PhysicsManager.DrawBits.e_aabbBit | cc.PhysicsManager.DrawBits.e_pairBit | cc.PhysicsManager.DrawBits.e_centerOfMassBit | cc.PhysicsManager.DrawBits.e_jointBit | cc.PhysicsManager.DrawBits.e_shapeBit;
-        //cc.director.getPhysicsManager().debugDrawFlags = 0;
+        //cc.director.getPhysicsManager().debugDrawFlags = cc.PhysicsManager.DrawBits.e_aabbBit | cc.PhysicsManager.DrawBits.e_pairBit | cc.PhysicsManager.DrawBits.e_centerOfMassBit | cc.PhysicsManager.DrawBits.e_jointBit | cc.PhysicsManager.DrawBits.e_shapeBit;
+        cc.director.getPhysicsManager().debugDrawFlags = 0;
 
         this.registerInput();
 
@@ -71,9 +74,6 @@ cc.Class({
         }
 
         if( this.craneNode.getPositionY() < this.destCraneHeightY){
-            cc.log("###############################");
-            cc.log(dt);
-
             var stepLen = (this.destCraneHeightY - this.craneNode.getPositionY()) * dt * 0.4;
 
             // move crane and camera
@@ -140,7 +140,11 @@ cc.Class({
                 this.preHouseYHeight = this.preHouse.getPositionY();
             }
 
-            cc.log(this.preHouseYHeight);
+            this.floor += 1;
+            this.score += 1;
+
+            cc.log("score^^^^^^^^^^^^^^^^^^^^^^^");
+            cc.log(this.score);
         }
     },
 
