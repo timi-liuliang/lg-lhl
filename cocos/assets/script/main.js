@@ -11,9 +11,24 @@ cc.Class({
         houseParentNode : cc.Node,
         dropNode : cc.Node,
         craneNode : cc.Node,
+        uiNode : cc.Node,
 
         // 房子预制体
-        housePrefab : cc.Prefab
+        housePrefab : cc.Prefab,
+
+        currentHouse : {
+            default: null,
+            type: cc.Node
+        },
+
+        preHouse : {
+            default : null,
+            type : cc.Node
+        },
+
+        preHouseYHeight : -420,
+        isFailed : false,
+        destCraneHeightY : 0,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -32,7 +47,13 @@ cc.Class({
     },
 
     start () {
+        this.uiNode.active = false;
+        this.preHouseYHeight = -400;
+        this.isFailed = false;
+        this.destCraneHeightY = this.craneNode.getPositionY();
     },
+
+    //update: function(dt){}
 
     onEnable: function () {
         cc.director.getPhysicsManager().attachDebugDrawToCamera(this.camera);
@@ -41,7 +62,31 @@ cc.Class({
         cc.director.getPhysicsManager().detachDebugDrawFromCamera(this.camera);
     },
 
-    // update (dt) {},
+    update : function(dt) {
+
+        if(this.currentHouse!=null){
+            if(this.currentHouse.getPositionY() < this.preHouseYHeight){
+                this.onFail();
+            }
+        }
+
+        if( this.craneNode.getPositionY() < this.destCraneHeightY){
+            cc.log("###############################");
+            cc.log(dt);
+
+            var stepLen = (this.destCraneHeightY - this.craneNode.getPositionY()) * dt * 0.4;
+
+            // move crane and camera
+            this.craneNode.setPositionY( this.craneNode.getPositionY() + stepLen);
+            this.camera.node.setPositionY( this.craneNode.getPositionY() - 150);
+        }
+    },
+
+    onFail(){
+        this.uiNode.active = true;
+
+        this.isFailed = true;
+    },
 
     // 事件注册
     registerInput () {
@@ -69,8 +114,12 @@ cc.Class({
 
     // 放置房子
     dropHouse() {
+        if(this.isFailed){
+            return;
+        }
+
         var dropNodeSprite = this.dropNode.getComponent(cc.Sprite);
-        if( dropNodeSprite.visible){
+        if( dropNodeSprite.enabled){
             var newHouse = cc.instantiate(this.housePrefab);
             newHouse.parent = this.houseParentNode;
             newHouse.setPositionX( this.dropNode.getPositionX());
@@ -79,11 +128,21 @@ cc.Class({
             this.dropNode.getComponent(cc.Sprite).setVisible(false);
 
             // 上移吊机
-            var houseHeight = this.dropNode.height * 0.8;
-            this.craneNode.setPositionY( this.craneNode.getPositionY() + houseHeight);
+            if(this.preHouseYHeight > -200){
+                this.destCraneHeightY = this.preHouseYHeight + 550;
+            }
 
-            // move Camera
-            this.camera.node.setPositionY( this.craneNode.getPositionY() - 150);
+            // remember nodes
+            this.preHouse = this.currentHouse;
+            this.currentHouse = newHouse;
+
+            cc.log(this.currentHouse);
+
+            if(this.preHouse!=null){
+                this.preHouseYHeight = this.preHouse.getPositionY();
+            }
+
+            cc.log(this.preHouseYHeight);
         }
     },
 
