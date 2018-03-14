@@ -28,12 +28,20 @@ cc.Class({
             type : cc.Node
         },
 
+        isWaitingResult : false,
+        waitingResultTime : 0,
+
         preHouseYHeight : -420,
         isFailed : false,
         destCraneHeightY : 0,
 
         floor : 0,
         score : 0,
+
+        houseArray:{
+            default:[],
+            type:[cc.Node]
+        },
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -72,6 +80,31 @@ cc.Class({
         if(this.currentHouse!=null){
             if(this.currentHouse.getPositionY() < this.preHouseYHeight){
                 this.onFail();
+            }
+
+            if(this.isWaitingResult){
+                this.waitingResultTime += dt;
+                if( this.waitingResultTime > 0.06 && Math.abs(this.currentHouse.getComponent(cc.RigidBody).linearVelocity.y) < 1){
+                    this.floor += 1;
+                    this.score += 1;
+
+                    if( this.preHouse!=null){
+                        if( Math.abs(this.currentHouse.getPositionX() - this.preHouse.getPositionX()) < this.currentHouse.width * 0.1){
+                            this.score += 1;
+                            //this.houseArray.appendObjectAt( this.preHouse, 0);
+                            this.preHouse.getComponent(cc.RigidBody).type = cc.RigidBodyType.Static;
+                        }
+                    }
+                    else{
+                        this.score += 1;
+                    }
+                            
+                    this.uiScoreLabel.string = "Score:" + this.score;
+                    this.uiFloorLabel.string = "Floor:" + this.floor;
+
+                    this.isWaitingResult = false;
+                    this.waitingResultTime = 0;
+                }
             }
         }
 
@@ -136,20 +169,11 @@ cc.Class({
             this.preHouse = this.currentHouse;
             this.currentHouse = newHouse;
 
-            cc.log(this.currentHouse);
+            this.isWaitingResult = true;
 
             if(this.preHouse!=null){
                 this.preHouseYHeight = this.preHouse.getPositionY();
             }
-
-            this.floor += 1;
-            this.score += 1;
-
-            this.uiScoreLabel.string = "Score:" + this.score;
-            this.uiFloorLabel.string = "Floor:" + this.floor;
-
-            cc.log("score^^^^^^^^^^^^^^^^^^^^^^^");
-            cc.log(this.score);
         }
     },
 

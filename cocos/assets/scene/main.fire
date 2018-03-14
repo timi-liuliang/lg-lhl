@@ -1412,6 +1412,8 @@
     },
     "currentHouse": null,
     "preHouse": null,
+    "isWaitingResult": false,
+    "waitingResultTime": 0,
     "preHouseYHeight": 0,
     "isFailed": false,
     "destCraneHeightY": 0,
@@ -1460,9 +1462,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 0,
-      "g": 0,
-      "b": 0,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -1567,9 +1569,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 0,
-      "g": 0,
-      "b": 0,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
