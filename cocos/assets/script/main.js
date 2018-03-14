@@ -11,7 +11,9 @@ cc.Class({
         houseParentNode : cc.Node,
         dropNode : cc.Node,
         craneNode : cc.Node,
-        uiNode : cc.Node,
+        uiEndNode : cc.Node,
+        uiScoreLabel : cc.Label,
+        uiFloorLabel : cc.Label,
 
         // 房子预制体
         housePrefab : cc.Prefab,
@@ -50,7 +52,7 @@ cc.Class({
     },
 
     start () {
-        this.uiNode.active = false;
+        this.uiEndNode.active = false;
         this.preHouseYHeight = -400;
         this.isFailed = false;
         this.destCraneHeightY = this.craneNode.getPositionY();
@@ -83,7 +85,7 @@ cc.Class({
     },
 
     onFail(){
-        this.uiNode.active = true;
+        this.uiEndNode.active = true;
 
         this.isFailed = true;
     },
@@ -142,6 +144,9 @@ cc.Class({
 
             this.floor += 1;
             this.score += 1;
+
+            this.uiScoreLabel.string = "Score:" + this.score;
+            this.uiFloorLabel.string = "Floor:" + this.floor;
 
             cc.log("score^^^^^^^^^^^^^^^^^^^^^^^");
             cc.log(this.score);
