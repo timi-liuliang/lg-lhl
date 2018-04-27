@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<node name="main" class="Node" Position="0 0 0" Rotation="0 0 0" Scale="1 1 1" Script="">
+	<node name="bg" class="Node" Position="0 0 0" Rotation="0 0 0" Scale="1 1 1" Script="">
+		<node name="bg0" class="Sprite2D" Position="0 0 0" Rotation="0 0 0" Scale="1 1 1" Script="" Texture="Res://texture/house01.png" />
+		<node name="base" class="Sprite2D" Position="0 -300 0" Rotation="0 0 0" Scale="1 1 1" Script="" Texture="Res://texture/ground01.png" />
+	</node>
+	<node name="house" class="Node" Position="0 0 0" Rotation="0 0 0" Scale="1 1 1" Script="" />
+</node>
