@@ -1,6 +1,2 @@
-<?xml version='1.0' encoding='utf-8' ?>
-<project>
-	<archives>
-	</archives>
-</project>
-
+<?xml version="1.0" encoding="utf-8"?>
+<res name="" class="ProjectSettings" Window.Width="640" Window.Height="960" Game.LaunchScene="Res://main.scene" />
