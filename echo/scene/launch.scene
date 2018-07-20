@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<node name="main" class="Node" Enable="true" Position="0 0 0" Rotation="0 0 0" Scale="1 1 1" Script="">
+	<node name="house" class="Box2DBody" Enable="true" Position="0 0 -0.5" Rotation="0 0 0" Scale="1 1 1" Script="" Type="Dynamic">
+		<node name="Sprite" class="Sprite" Enable="true" Position="0 0 0" Rotation="0 0 0" Scale="1 1 1" Script="" Is2D="true" Width="150" Height="100" Texture="Res://texture/house01.png" />
+	</node>
+	<node name="ground" class="Box2DBody" Enable="true" Position="0 -450 0" Rotation="0 0 0" Scale="1 1 1" Script="" Type="Static">
+		<node name="Sprite" class="Sprite" Enable="true" Position="0 0 0" Rotation="0 0 0" Scale="1 1 1" Script="" Is2D="true" Width="640" Height="70" Texture="Res://texture/ground01.png" />
+	</node>
+	<node name="bgs" class="Node" Enable="true" Position="0 0 -1" Rotation="0 0 0" Scale="1 1 1" Script="">
+		<node name="bg0" class="Sprite" Enable="true" Position="0 0 0" Rotation="0 0 0" Scale="1 1 1" Script="" Is2D="true" Width="640" Height="960" Texture="Res://texture/backgroud01_01.PNG" />
+		<node name="bg1" class="Sprite" Enable="true" Position="0 960 0" Rotation="0 0 0" Scale="1 1 1" Script="" Is2D="true" Width="640" Height="960" Texture="Res://texture/backgroud01_02.PNG" />
+		<node name="bg2" class="Sprite" Enable="true" Position="0 1920 0" Rotation="0 0 0" Scale="1 1 1" Script="" Is2D="true" Width="640" Height="960" Texture="Res://texture/backgroud01_03.PNG" />
+	</node>
+</node>

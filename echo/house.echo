@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<res name="" class="ProjectSettings" Window.Width="640" Window.Height="960" Game.LaunchScene="Res://main.scene" />
+<res name="" class="ProjectSettings" Path="Res://house.echo" Window.Width="640" Window.Height="960" Game.LaunchScene="Res://scene/launch.scene" />
