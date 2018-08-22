@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<node name="bgs" class="Node" path="" Enable="true" Position="0 0 -2" Rotation="0 0 0" Scale="1 1 1" Script="">
-	<node name="bg0" class="Sprite" path="" Enable="true" Position="0 0 0" Rotation="0 0 0" Scale="1 1 1" Script="" Is2D="true" Width="640" Height="960" Texture="Res://texture/backgroud01_01.PNG" />
-	<node name="bg1" class="Sprite" path="" Enable="true" Position="0 960 0" Rotation="0 0 0" Scale="1 1 1" Script="" Is2D="true" Width="640" Height="960" Texture="Res://texture/backgroud01_02.PNG" />
-	<node name="bg2" class="Sprite" path="" Enable="true" Position="0 1920 0" Rotation="0 0 0" Scale="1 1 1" Script="" Is2D="true" Width="640" Height="960" Texture="Res://texture/backgroud01_03.PNG" />
-</node>
