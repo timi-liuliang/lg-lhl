@@ -1,18 +1,23 @@
-local template =
-{
-	bgsOffsetY = 0
-}
+local node ={ }
+local bgsOffsetY = 0
+local bgs = nil
 
 -- start
-function template:start()
+function node:start()
+	bgs = self:get_node("bgs/bg0")
 end
 
 -- update
-function template:update()
-	if(Input:getMouseButtonDown(0)) then
-		self.bgsOffsetY = self.bgsOffsetY + 10
-		self:setLocalPosition(vec3( 0, self.bgsOffsetY, 0))
+function node:update()
+	if(Input:getMouseButtonDown(1)) then
+		bgsOffsetY = 0
+		bgs:setLocalPosition(vec3( 0, bgsOffsetY, 0))
+	end
+
+	if(Input:isMouseButtonDown(0)) then
+		bgsOffsetY = bgsOffsetY + 1
+		bgs:setLocalPosition(vec3( 0, bgsOffsetY, 0))
 	end
 end
 
-return template
+return node
