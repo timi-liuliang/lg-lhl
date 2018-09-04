@@ -5,9 +5,9 @@ local bgs = nil
 
 -- start
 function main:start()
-	houses = self:get_node("houses")
-	bgs    = self:get_node("bgs")
-	ground = self:get_node("ground")
+	houses = self:getNode("houses")
+	bgs    = self:getNode("bgs")
+	ground = self:getNode("ground")
 end
 
 -- update
@@ -15,7 +15,7 @@ function main:update()
 	if(Input:getMouseButtonDown(0)) then
 		local newHouse = self:instance("Res://scene/house.scene")
 		if newHouse~=nil then
-			houses:add_child(newHouse)
+			houses:addChild(newHouse)
 		end
 	end
 end
