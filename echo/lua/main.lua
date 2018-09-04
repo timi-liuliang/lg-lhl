@@ -1,23 +1,23 @@
-local node ={ }
-local bgsOffsetY = 0
+local main = { }
+local houses = nil
+local ground = nil
 local bgs = nil
 
 -- start
-function node:start()
-	bgs = self:get_node("bgs/bg0")
+function main:start()
+	houses = self:get_node("houses")
+	bgs    = self:get_node("bgs")
+	ground = self:get_node("ground")
 end
 
 -- update
-function node:update()
-	if(Input:getMouseButtonDown(1)) then
-		bgsOffsetY = 0
-		bgs:setLocalPosition(vec3( 0, bgsOffsetY, 0))
-	end
-
-	if(Input:isMouseButtonDown(0)) then
-		bgsOffsetY = bgsOffsetY + 1
-		bgs:setLocalPosition(vec3( 0, bgsOffsetY, 0))
+function main:update()
+	if(Input:getMouseButtonDown(0)) then
+		local newHouse = self:instance("Res://scene/house.scene")
+		if newHouse~=nil then
+			houses:add_child(newHouse)
+		end
 	end
 end
 
-return node
+return setmetatable(main, Node)
