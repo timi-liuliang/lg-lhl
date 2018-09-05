@@ -13,7 +13,7 @@ end
 -- update
 function main:update()
 	if(Input:getMouseButtonDown(0)) then
-		local newHouse = self:instance("Res://scene/house.scene")
+		local newHouse = Node.load("Res://scene/house.scene")
 		if newHouse~=nil then
 			houses:addChild(newHouse)
 		end
