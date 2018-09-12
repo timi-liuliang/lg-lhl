@@ -64,6 +64,13 @@ function main:dropHouse()
 		newHouse:setParent(houses)
 		newHouse:setPosition(dropNode:getPosition())
 		
+		-- test-------------------------
+		local metaTable = getmetatable(dropNode)
+		for k,v in pairs(metaTable) do
+			Log:error(k)
+		end
+		-- test-------------------------
+		
 		-- hidden drop node
 		dropNode:setVisible(false)
 		
