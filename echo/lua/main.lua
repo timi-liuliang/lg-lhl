@@ -32,7 +32,7 @@ function main:update()
 
 	if currentHouse ~= nil then
 		if currentHouse:getPositionY() < preHouseYHeight then
-			onFaile()
+			self:onFaile()
 		end
 	
 		-- waiting result state
@@ -47,7 +47,7 @@ function main:update()
 			local stepLen = (destCraneHeightY - craneNode:getPositionY()) * 0.04
 			
 			-- move crane and camera
-			craneNode:setPositonY(craneNode:getPositionY() + stepLen)
+			craneNode:setPositionY(craneNode:getPositionY() + stepLen)
 			camera:setPositionY(craneNode:getPositionY() - 150.0)
 		end
 	end
@@ -63,13 +63,6 @@ function main:dropHouse()
 	if newHouse~=nil then
 		newHouse:setParent(houses)
 		newHouse:setPosition(dropNode:getPosition())
-		
-		-- test-------------------------
-		local metaTable = getmetatable(dropNode)
-		for k,v in pairs(metaTable) do
-			Log:error(k)
-		end
-		-- test-------------------------
 		
 		-- hidden drop node
 		dropNode:setVisible(false)
