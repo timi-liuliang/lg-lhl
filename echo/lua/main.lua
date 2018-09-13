@@ -12,6 +12,7 @@ local isFailed = false
 local isWaitingResult = false
 local waitingResultTime = 0.0
 local destCraneHeightY = 0.0
+local cameraCraneOffsetY = nil
 
 -- start
 function main:start()
@@ -49,13 +50,19 @@ function main:update()
 			-- move crane
 			craneNode:setPositionY(craneNode:getPositionY() + stepLen)
 			
-			-- move camera
-			local cameraY = craneNode:getPositionY() - 150.0
-			camera:setPositionY(cameraY)
+			-- move camera based on crane posY
+			if cameraCraneOffsetY == nil then
+				-- get the initialize camera crane offset
+				cameraCraneOffsetY = camera:getPositionY() - craneNode:getPositionY()
+			else
+				local cameraY = craneNode:getPositionY() + cameraCraneOffsetY
+				camera:setPositionY(cameraY)
 			
-			-- move bgs based on camera position(logrithm function)
-			local bgsY = math.log(cameraY + 1.0)
-			bgs:setPositionY(bgsY)
+				-- move bgs based on camera position(linear and logrithm function)
+				local moveThreshold = 500
+				local bgsY = math.max(cameraY - moveThreshold, 0.0) * 0.85
+				bgs:setPositionY(bgsY)
+			end
 		end
 	end
 end
@@ -75,7 +82,7 @@ function main:dropHouse()
 		dropNode:setVisible(false)
 		
 		-- move up crane
-		destCraneHeightY = preHouseYHeight + 550
+		destCraneHeightY = preHouseYHeight + 700
 		
 		-- remember nodes
 		preHouse = currentHouse
