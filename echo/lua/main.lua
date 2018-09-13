@@ -32,7 +32,7 @@ function main:update()
 
 	if currentHouse ~= nil then
 		if currentHouse:getPositionY() < preHouseYHeight then
-			self:onFaile()
+			self:onFail()
 		end
 	
 		-- waiting result state
@@ -44,11 +44,18 @@ function main:update()
 
 		-- update crane node position
 		if craneNode:getPositionY() < destCraneHeightY then
-			local stepLen = (destCraneHeightY - craneNode:getPositionY()) * 0.04
+			local stepLen = (destCraneHeightY - craneNode:getPositionY()) * 0.004
 			
-			-- move crane and camera
+			-- move crane
 			craneNode:setPositionY(craneNode:getPositionY() + stepLen)
-			camera:setPositionY(craneNode:getPositionY() - 150.0)
+			
+			-- move camera
+			local cameraY = craneNode:getPositionY() - 150.0
+			camera:setPositionY(cameraY)
+			
+			-- move bgs based on camera position(logrithm function)
+			local bgsY = math.log(cameraY + 1.0)
+			bgs:setPositionY(bgsY)
 		end
 	end
 end
@@ -84,7 +91,7 @@ end
 
 -- on faile
 function main:onFail()
-	isFailed = true
+	--isFailed = true
 end
 
 return setmetatable(main, Node)
